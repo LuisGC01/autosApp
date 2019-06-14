@@ -3,7 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var mongoose = require("mongoose");
+mongoose.connect('mongodb+srv://developer:gniXlxJrW9FRJf7H@cluster0-nsb8h.gcp.mongodb.net/autosdb',
+	{useNewUrlParser:true}).then(
+		()=>{
+			console.log('conectado');
+		}
+	);
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var galeriaRouter = require('./routes/galeria');
@@ -42,3 +48,7 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+/*
+
+gniXlxJrW9FRJf7H
+*/

@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var mongoose=require('mongoose');
+var Mazda=require('../models/autos');
+
 router.get('/mazda', function(req, res, next) {
-	var data={autos:[]};
-	var auto={};
-	
+	/*var data={autos:[]};
+	var auto={};	
 	auto.nombre="Mazda 3";
 	auto.foto="http://chiquini.mx/wp-content/uploads/2018/12/Mazda-3_Sedan-2019-1280-01.jpg";
 	data.autos.push(auto);
@@ -32,10 +34,13 @@ router.get('/mazda', function(req, res, next) {
 	auto.nombre="Mazda CX-3";
 	auto.foto="https://autoland.com.pe/wp-content/uploads/2018/02/20180118072122-1.jpg";
 	data.autos.push(auto);
-	
-	console.log(data);
+*/
+	Mazda.find({},function(err,data) {
+		console.log(data);
+		var x = {autos:data}
+		res.render('./galeria/mazda',x);
+	});
 
-	res.render('./galeria/mazda', data);
 });
 
 module.exports = router;
